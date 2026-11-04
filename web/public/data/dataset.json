@@ -1,0 +1,121 @@
+{
+ "meta": {
+  "generated": "2026-11-04",
+  "repo": "https://github.com/YaoZeyuan/beijing-xiaoqu-ditu",
+  "rawBase": "https://raw.githubusercontent.com/YaoZeyuan/beijing-xiaoqu-ditu/main/public_data/",
+  "browseBase": "https://github.com/YaoZeyuan/beijing-xiaoqu-ditu/tree/main/public_data/",
+  "license": "CC BY 4.0",
+  "stats": {
+   "备案项目": 10495,
+   "已匹配": 7194,
+   "匹配率": 68.5,
+   "去重小区": 5655,
+   "未匹配": 3301,
+   "备案主表": 10495,
+   "一对一": 4792,
+   "多对一": 2402,
+   "低置信匹配": 2823
+  },
+  "regime": {
+   "样本": 4825,
+   "业委会": 1329,
+   "物管会": 2452,
+   "均未成立": 1044,
+   "业委会率": 27.5,
+   "物管会率": 50.8
+  }
+ },
+ "groups": [
+  {
+   "key": "raw",
+   "title": "原始数据",
+   "desc": "未经加工的源数据。想自己重跑匹配、或验证我们的结果，从这三份开始。",
+   "items": [
+    {
+     "name": "gov_projects",
+     "title": "北京住宅小区政府备案数据",
+     "desc": "北京市住建委住宅小区业主大会与业委会备案系统导出的全量项目，已脱敏。",
+     "rows": 10495,
+     "fields": 15,
+     "csv": "raw/gov_projects.csv",
+     "json": "raw/gov_projects.json",
+     "csvSize": "2.5MB",
+     "jsonSize": "8.3MB"
+    },
+    {
+     "name": "lianjia_2018",
+     "title": "链家开源小区库 2018",
+     "desc": "来自 shuijingoj/LianJiaCommunityData，两期可交叉核对户数。",
+     "rows": 9878,
+     "fields": 17,
+     "csv": "raw/lianjia_2018.csv",
+     "json": "raw/lianjia_2018.json",
+     "csvSize": "2.6MB",
+     "jsonSize": "5.9MB"
+    },
+    {
+     "name": "lianjia_2019",
+     "title": "链家开源小区库 2019",
+     "desc": "来自 shuijingoj/LianJiaCommunityData，两期可交叉核对户数。",
+     "rows": 10101,
+     "fields": 17,
+     "csv": "raw/lianjia_2019.csv",
+     "json": "raw/lianjia_2019.json",
+     "csvSize": "2.7MB",
+     "jsonSize": "6.1MB"
+    }
+   ]
+  },
+  {
+   "key": "processed",
+   "title": "加工结果",
+   "desc": "把政府备案和链家小区库接起来之后的结果。以备案为单位做分析用 beian_master，以小区为单位用 xiaoqu。",
+   "items": [
+    {
+     "name": "xiaoqu",
+     "title": "北京小区级主表（匹配成功）",
+     "desc": "按链家小区去重，一行一个小区。统计时用这张表，不要用 matched（备案按楼栋拆分会重复计数）。",
+     "rows": 5655,
+     "fields": 31,
+     "csv": "processed/xiaoqu.csv",
+     "json": "processed/xiaoqu.json",
+     "csvSize": "2.1MB",
+     "jsonSize": "6.1MB"
+    },
+    {
+     "name": "matched",
+     "title": "备案项目 ↔ 链家小区 匹配明细",
+     "desc": "一行一个备案项目，保留匹配方式与置信度，可追溯每个匹配是怎么来的。",
+     "rows": 7194,
+     "fields": 23,
+     "csv": "processed/matched.csv",
+     "json": "processed/matched.json",
+     "csvSize": "2.3MB",
+     "jsonSize": "6.2MB"
+    },
+    {
+     "name": "beian_master",
+     "title": "北京备案项目主表（一行一条备案）",
+     "desc": "以政府备案项目为基准，右挂链家小区信息。业委会状态、物业费、公共收益均为备案口径——这是目前唯一带业委会成立情况的一手数据。链家字段按关联状态决定填不填，未匹配的成因看匹配类别列（6 类互斥，含 AI 互联网补查的「AI寻找」）。户数看 户数/AI户数 两列，AI户数口径标明是「单条备案」「本备案分区」「整小区合计」还是「整小区合计·分区未拆」——最后一种多条备案共用，求和前必须按链家id去重。",
+     "rows": 10495,
+     "fields": 46,
+     "csv": "processed/beian_master.csv",
+     "json": "processed/beian_master.json",
+     "csvSize": "7.0MB",
+     "jsonSize": "17.5MB"
+    },
+    {
+     "name": "unmatched",
+     "title": "未匹配的备案项目",
+     "desc": "链家库里找不到对应小区的备案项目，附程序召回的 Top3 候选，供人工或换数据源时补匹配。",
+     "rows": 3301,
+     "fields": 21,
+     "csv": "processed/unmatched.csv",
+     "json": "processed/unmatched.json",
+     "csvSize": "1.0MB",
+     "jsonSize": "2.4MB"
+    }
+   ]
+  }
+ ]
+}

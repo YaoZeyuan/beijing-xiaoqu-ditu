@@ -1,0 +1,29 @@
+# 依赖 / 构建产物
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.venv/
+
+# 原始抓取数据：含未脱敏的联系人和姓名，只在本地产出，绝不入库
+raw_data/
+
+# 抓取中间产物（可重新生成，不入库）
+crawler/data/list_cache.jsonl
+crawler/data/html/
+crawler/data/projects.masked.jsonl
+crawler/data/*.xlsx
+crawler/data/*.csv
+
+# 自用导出表：含公共收益金额、信用代码等未脱敏内容，只留本地
+/exports/
+
+# 系统 / 编辑器
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# WorkBuddy 本地工作记忆：内部笔记，不进公开仓库
+.workbuddy/

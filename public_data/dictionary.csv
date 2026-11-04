@@ -1,0 +1,161 @@
+﻿文件,字段,含义,填充率
+raw/gov_projects,project_no,政府备案项目编号（住建委系统内的唯一 ID）,100%
+raw/gov_projects,项目名称,备案登记的小区名,100%
+raw/gov_projects,区,行政区,98%
+raw/gov_projects,街道,所属街道,100%
+raw/gov_projects,项目地址,备案登记地址,84%
+raw/gov_projects,建成年代,备案登记的建成年份（覆盖 84%，与链家的 age 是两套独立登记）,84%
+raw/gov_projects,物业服务收费方式,包干制 / 酬金制,100%
+raw/gov_projects,物业费明细,按 业态-房屋性质-建筑类型:单价 压缩成一行，多档用 ; 分隔；单价单位 元/㎡·月,84%
+raw/gov_projects,房屋性质,从物业费明细里取出的产权性质：普通商品房/房改房/央产房/回迁房/保障房/别墅/公房等,81%
+raw/gov_projects,公共收益是否单独列账,是 / 否,100%
+raw/gov_projects,公共收益列账方式,会计列账 / 账户列账,39%
+raw/gov_projects,业委会状态,业委会 / 物管会 / 均未成立,100%
+raw/gov_projects,业委会人数,业委会或物管会成员人数,58%
+raw/gov_projects,物业服务企业名称,2026 年备案登记的物业公司,84%
+raw/gov_projects,备案登记完整,地址/物业公司/物业费明细是否都有填；否=残缺记录，见 README,100%
+raw/lianjia_2018,community_id,链家小区 ID,100%
+raw/lianjia_2018,community_name,链家小区名,100%
+raw/lianjia_2018,区,行政区,100%
+raw/lianjia_2018,商圈,链家商圈,100%
+raw/lianjia_2018,地址,链家地址（括号内是商圈，后面是门牌）,100%
+raw/lianjia_2018,户数,house_amount,100%
+raw/lianjia_2018,楼栋数,building_amount,100%
+raw/lianjia_2018,建成年代,age 字段原值，如「1980年建成」,100%
+raw/lianjia_2018,建筑结构,structure,100%
+raw/lianjia_2018,物业费,management_fee,100%
+raw/lianjia_2018,物业公司,management_co,100%
+raw/lianjia_2018,开发商,developer,100%
+raw/lianjia_2018,参考均价,unit_price，元/㎡,73%
+raw/lianjia_2018,均价月份,price_date,73%
+raw/lianjia_2018,经度,longitude,100%
+raw/lianjia_2018,纬度,latitude,100%
+raw/lianjia_2018,链家页面,url,100%
+raw/lianjia_2019,community_id,链家小区 ID,100%
+raw/lianjia_2019,community_name,链家小区名,100%
+raw/lianjia_2019,区,行政区,100%
+raw/lianjia_2019,商圈,链家商圈,100%
+raw/lianjia_2019,地址,链家地址（括号内是商圈，后面是门牌）,100%
+raw/lianjia_2019,户数,house_amount,100%
+raw/lianjia_2019,楼栋数,building_amount,100%
+raw/lianjia_2019,建成年代,age 字段原值，如「1980年建成」,100%
+raw/lianjia_2019,建筑结构,structure,100%
+raw/lianjia_2019,物业费,management_fee,100%
+raw/lianjia_2019,物业公司,management_co,100%
+raw/lianjia_2019,开发商,developer,100%
+raw/lianjia_2019,参考均价,unit_price，元/㎡,71%
+raw/lianjia_2019,均价月份,price_date,71%
+raw/lianjia_2019,经度,longitude,100%
+raw/lianjia_2019,纬度,latitude,100%
+raw/lianjia_2019,链家页面,url,100%
+processed/xiaoqu,小区id,LJ+链家小区ID,100%
+processed/xiaoqu,小区名,链家小区名，对外展示用,100%
+processed/xiaoqu,政府小区名,对应的备案登记名，一个链家小区对应多个备案名时以 | 连接,100%
+processed/xiaoqu,区,行政区,99%
+processed/xiaoqu,街道,所属街道,99%
+processed/xiaoqu,商圈,链家商圈,100%
+processed/xiaoqu,户数,链家 2019 登记的户数,100%
+processed/xiaoqu,户数2018,链家 2018 登记值，用于交叉核对（92% 完全一致）,98%
+processed/xiaoqu,楼栋数,链家登记楼栋数,100%
+processed/xiaoqu,建成年代,链家 age,100%
+processed/xiaoqu,物业费,链家 management_fee,100%
+processed/xiaoqu,物业公司名2019,链家 2019 登记的物业公司,100%
+processed/xiaoqu,物业公司名2026,备案 2026 登记的物业服务企业,86%
+processed/xiaoqu,物业公司变更,两者比对结果；疑似档需人工复核,100%
+processed/xiaoqu,物业服务收费方式,包干制 / 酬金制,100%
+processed/xiaoqu,房屋性质,产权性质，来自备案物业费明细；多值用 | 分隔,86%
+processed/xiaoqu,居住类物业费,备案登记的居住类单价，元/㎡·月,86%
+processed/xiaoqu,公共收益是否单独列账,任一条目为是则为是,100%
+processed/xiaoqu,业委会人数,多个备案项目取最大值,68%
+processed/xiaoqu,备案登记完整,该小区所有备案项目里是否至少有一条登记完整,100%
+processed/xiaoqu,业委会状态,业委会 / 物管会 / 均未成立，多个项目取最高档,100%
+processed/xiaoqu,经度,经度,100%
+processed/xiaoqu,纬度,纬度,100%
+processed/xiaoqu,链家单价2019,链家小区参考均价，元/㎡,89%
+processed/xiaoqu,链家小区id,链家小区 ID,100%
+processed/xiaoqu,链家链接,链家页面,100%
+processed/xiaoqu,备案项目数,该小区对应的备案项目数，>1 说明备案按楼栋拆分登记,100%
+processed/xiaoqu,匹配置信度,high / medium / low，多个项目取最低,100%
+processed/xiaoqu,匹配方式,命中的匹配规则,100%
+processed/xiaoqu,链家为聚合页,是=链家把多个院落合成一条，户数为合计值,100%
+processed/xiaoqu,是否住宅,否=写字楼/商场等非住宅,100%
+processed/matched,project_no,政府备案项目编号,100%
+processed/matched,政府小区名,备案登记名,100%
+processed/matched,链家小区名,匹配到的链家小区名,100%
+processed/matched,链家小区id,链家小区 ID,100%
+processed/matched,小区id,对应 xiaoqu 里的主键,100%
+processed/matched,区,行政区,99%
+processed/matched,街道,所属街道,100%
+processed/matched,备案地址,备案登记地址,85%
+processed/matched,户数,该链家小区的户数,100%
+processed/matched,楼栋数,该链家小区的楼栋数,100%
+processed/matched,建成年代,链家 age,100%
+processed/matched,物业公司名2019,链家 2019 登记的物业公司,100%
+processed/matched,物业公司名2026,备案 2026 登记的物业服务企业,85%
+processed/matched,物业公司变更,两者比对结果,100%
+processed/matched,物业服务收费方式,包干制 / 酬金制,100%
+processed/matched,房屋性质,产权性质,83%
+processed/matched,居住类物业费,备案居住类单价,83%
+processed/matched,公共收益是否单独列账,是 / 否,100%
+processed/matched,业委会人数,业委会或物管会成员人数,65%
+processed/matched,备案登记完整,地址/物业公司/物业费是否都填了,100%
+processed/matched,业委会状态,业委会 / 物管会 / 均未成立,100%
+processed/matched,匹配方式,命中的规则或模型语义判定,100%
+processed/matched,置信度,high / medium / low,100%
+processed/beian_master,备案编号,主键，政府备案项目编号,100%
+processed/beian_master,备案项目名,备案登记的项目名,100%
+processed/beian_master,区,备案登记行政区,98%
+processed/beian_master,街道,"备案登记街道，源数据里 1,715 条为空",98%
+processed/beian_master,备案地址,备案登记地址,84%
+processed/beian_master,建成年代_备案,备案登记建成年代，大量为空,84%
+processed/beian_master,业委会状态,业委会 / 物管会 / 均未成立，2026 年备案口径,100%
+processed/beian_master,业委会人数,业委会或物管会人数,58%
+processed/beian_master,物业服务收费方式,包干制 / 酬金制,100%
+processed/beian_master,物业费标准_备案,备案登记的原始物业费文本，未解析,84%
+processed/beian_master,居住类物业费,从物业费明细里取居住类单价最高者，元/㎡·月,81%
+processed/beian_master,房屋性质,从物业费明细里取，多值用 | 连接,81%
+processed/beian_master,物业公司2026,备案登记的物业服务企业全称,83%
+processed/beian_master,公共收益是否单独列账,是 / 否,100%
+processed/beian_master,公共收益收入,物业共有部分经营收入，源数据填报单位未标注（多数按元），0 与空分不清,100%
+processed/beian_master,公共收益支出,物业共有部分经营支出，同上,100%
+processed/beian_master,公共收益余额,共有部分经营余额，同上,100%
+processed/beian_master,备案登记完整,1=地址、物业公司、物业费明细都有；0=登记残缺，做统计要先过滤,100%
+processed/beian_master,匹配类别,匹配结果与未匹配成因，5 类互斥；已匹配的细分原因看「匹配方式」,100%
+processed/beian_master,关联状态,一对一 / 多对一 / 一对多 / 未匹配,100%
+processed/beian_master,共享该链家的备案数,指向同一个链家小区的备案条数；一对一 恒为 1,69%
+processed/beian_master,匹配方式,规则名（中文）,100%
+processed/beian_master,匹配代码,规则原始代码，便于回溯 match_lianjia.py,100%
+processed/beian_master,置信度,high / medium / low；未匹配为空,69%
+processed/beian_master,链家id,链家 community_id,69%
+processed/beian_master,链家小区名,链家页面上的小区名,69%
+processed/beian_master,链家地址,"链家 location 字段，格式为「(区商圈)地址1, 地址2」",69%
+processed/beian_master,商圈,链家商圈,69%
+processed/beian_master,经度,链家坐标，取 2019 快照,69%
+processed/beian_master,纬度,链家坐标，取 2019 快照,69%
+processed/beian_master,小区均价,链家参考均价，取 2019，缺失回退 2018，元/㎡,61%
+processed/beian_master,均价2018,链家 2018-11 参考均价，元/㎡,61%
+processed/beian_master,均价2019,链家 2019-02 参考均价，元/㎡,61%
+processed/beian_master,户数,两期最大值；仅一对一填，多对一留空,46%
+processed/beian_master,户数2018,链家 2018-11 登记户数,45%
+processed/beian_master,户数2019,链家 2019-02 登记户数,46%
+processed/beian_master,历史物业费,两期挂牌物业费的最大值；区间取上限，元/㎡·月,44%
+processed/beian_master,物业费2018_原始,链家 2018 挂牌物业费原文，如「1.98至2.5元/平米/月」,43%
+processed/beian_master,物业费2019_原始,链家 2019 挂牌物业费原文,44%
+processed/beian_master,链家建成年代,链家 age 折算的年份,63%
+processed/beian_master,AI户数,AI 网上检索到的户数（户），来源与链接见备注,29%
+processed/beian_master,AI户数口径,户数口径四选一：单条备案 / 本备案分区 / 整小区合计 / 整小区合计·分区未拆。后两种是「整小区合计」，其中带「分区未拆」的为多条备案共用同一个小区总数，求和前必须按「链家id」去重,29%
+processed/beian_master,AI物业费,AI 网上检索到的物业费（元/㎡·月）,17%
+processed/beian_master,AI均价,AI 网上检索到的挂牌均价（元/㎡）,11%
+processed/beian_master,AI来源,AI 检索来源页面链接,30%
+processed/beian_master,备注,关联状态、链家侧字段缺失、数值异常的逐条说明；完全无异常时为空,72%
+processed/unmatched,project_no,政府备案项目编号,100%
+processed/unmatched,政府小区名,备案登记名,100%
+processed/unmatched,区,行政区,95%
+processed/unmatched,街道,所属街道,100%
+processed/unmatched,备案地址,备案登记地址,80%
+processed/unmatched,业委会状态,业委会 / 物管会 / 均未成立,100%
+processed/unmatched,物业服务收费方式,包干制 / 酬金制,100%
+processed/unmatched,房屋性质,产权性质,75%
+processed/unmatched,未匹配原因,最后一步尝试的规则名；no_candidate=链家里确实没有相似的,100%
+processed/unmatched,候选1小区名,程序召回的 Top1 候选，仅供人工参考，不一定对,85%
+processed/unmatched,候选1相似度,名称相似度 0~1,85%

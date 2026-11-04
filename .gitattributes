@@ -1,0 +1,9 @@
+* text=auto eol=lf
+
+# 数据文件强制 LF，并且不展示内容 diff。
+# 原因：这类大文件在 Windows 上被复制/编辑器碰一下就会整份变成 CRLF，
+# 10547 行全部报成"已修改"，实际内容一个字节都没动。
+crawler/data/*.jsonl text eol=lf -diff
+crawler/data/*.json text eol=lf -diff
+web/public/data/*.json text eol=lf -diff
+web/src/data/*.json text eol=lf -diff

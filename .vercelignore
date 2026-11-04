@@ -1,0 +1,14 @@
+# Vercel CLI 部署时不要上传的内容（Git 集成只取 git 跟踪的文件，这里主要兜 CLI 的底）
+raw_data/
+exports/
+.workbuddy/
+crawler/data/list_cache.jsonl
+crawler/data/html/
+crawler/data/*.xlsx
+crawler/data/*.csv
+crawler/data/projects.masked.jsonl
+node_modules/
+web/node_modules/
+web/dist/
+.github/
+.git/
