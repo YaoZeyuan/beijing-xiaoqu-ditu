@@ -11,6 +11,9 @@
         </p>
         <p>
           全部文件都以 <b>CSV 和 JSON 双份</b>提供，已脱敏，许可为 CC BY 4.0，注明来源即可自由使用。
+          备案库里本来没有户数，户数是我们从链家小区库和互联网公开页一条条查来的：
+          查到哪一档就标哪一档（<code>AI户数置信度</code> 分 A 政府 / B 官媒 / C 百科 / D 平台互证），
+          查不到就留 <code>-</code>，不拿估算值凑数。
         </p>
         <p class="hero-note">
           本站地图上展示的是其中能定位到城区 / 街道的小区，本页给的是备案系统的<b>全量</b>记录，
@@ -34,6 +37,10 @@
           <span class="hs-v">{{ n(meta.stats.未匹配) }}</span>
           <span class="hs-l">未匹配</span>
         </div>
+        <div v-if="meta.stats.户数覆盖率 != null" class="hs">
+          <span class="hs-v accent">{{ meta.stats.户数覆盖率 }}%</span>
+          <span class="hs-l">户数可得 {{ n(meta.stats.有户数备案) }}</span>
+        </div>
       </div>
     </section>
 
@@ -51,8 +58,8 @@
         <div class="dg-grid">
           <article v-for="it in g.items" :key="it.name" class="card">
             <div class="c-top">
-              <code class="c-path">{{ g.key }}/{{ it.name }}</code>
-              <span class="c-size">{{ it.csvSize }} / {{ it.jsonSize }}</span>
+              <code class="c-path">{{ it.local ? 'data/' + it.csv : g.key + '/' + it.name }}</code>
+              <span class="c-size">{{ it.jsonSize ? it.csvSize + ' / ' + it.jsonSize : it.csvSize + ' · 仅 CSV' }}</span>
             </div>
             <h4>{{ it.title }}</h4>
             <p class="c-desc">{{ it.desc }}</p>
@@ -61,13 +68,13 @@
               <span><b>{{ it.fields }}</b> 字段</span>
             </div>
             <div class="c-actions">
-              <a class="dl" :href="url(it.csv)" target="_blank" rel="noopener">
+              <a class="dl" :href="url(it.csv, it.local)" :download="it.local ? it.name + '.csv' : null" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 CSV
               </a>
-              <a class="dl ghost" :href="url(it.json)" target="_blank" rel="noopener">
+              <a v-if="it.json" class="dl ghost" :href="url(it.json)" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -135,8 +142,12 @@ print(ok['业委会状态'].value_counts(normalize=True))</code></pre>
             不过滤会得出「酬金制小区几乎不成立业委会」的假结论——过滤后两者没有差异。
           </li>
           <li>
-            <b>户数是链家 2019 年登记值，不是官方统计</b>
-            已与 2018 版交叉核对，92% 完全一致；个别小区是单栋空壳条目（&lt;6 户）。
+            <b>户数分两列，先看口径再用</b>
+            链家匹配到 {{ n(meta.stats.户数链家) }} 条（2018 / 2019 两期交叉核对，92% 一致），
+            互联网补查 {{ n(meta.stats.户数补查) }} 条（<code>AI户数置信度</code> 分 A 政府 / B 官媒 / C 百科 / D 平台互证），
+            合计覆盖 {{ n(meta.stats.有户数备案) }} 条（{{ meta.stats.户数覆盖率 }}%）。
+            其中 {{ n(meta.stats.户数整小区共用) }} 条的 <code>AI户数口径</code> 是「整小区合计·分区未拆」——
+            多条备案共用一个小区总数，求和前必须按 <code>链家id</code> 去重。
           </li>
           <li>
             <b><code>链家为聚合页 = 是</code> 的户数是合计值</b>
@@ -206,8 +217,9 @@ function n(v) {
   return (v ?? 0).toLocaleString()
 }
 
-// raw.githubusercontent.com 直连，点开即下载/预览
-function url(p) {
+// raw.githubusercontent.com 直连，点开即下载/预览；local 为站内自带的文件（中文台账）
+function url(p, local) {
+  if (local) return `${import.meta.env.BASE_URL}data/${p}`
   const base = ds.value?.meta?.rawBase || ''
   return base + p
 }
@@ -304,6 +316,7 @@ onMounted(async () => {
 }
 .dg-tag.raw { border-color: rgba(124, 92, 255, 0.4); color: #a691ff; }
 .dg-tag.processed { border-color: rgba(76, 154, 255, 0.4); color: #7fb6ff; }
+.dg-tag.release { border-color: rgba(46, 164, 79, 0.45); color: #6fd99b; }
 .dg-head h3 { font-size: 14px; font-weight: 600; }
 .dg-desc { font-size: 11.5px; color: var(--text-faint); }
 

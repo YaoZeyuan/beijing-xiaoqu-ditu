@@ -142,11 +142,12 @@ processed/beian_master,历史物业费,两期挂牌物业费的最大值；区�
 processed/beian_master,物业费2018_原始,链家 2018 挂牌物业费原文，如「1.98至2.5元/平米/月」,43%
 processed/beian_master,物业费2019_原始,链家 2019 挂牌物业费原文,44%
 processed/beian_master,链家建成年代,链家 age 折算的年份,63%
-processed/beian_master,AI户数,AI 网上检索到的户数（户），来源与链接见备注,29%
-processed/beian_master,AI户数口径,户数口径四选一：单条备案 / 本备案分区 / 整小区合计 / 整小区合计·分区未拆。后两种是「整小区合计」，其中带「分区未拆」的为多条备案共用同一个小区总数，求和前必须按「链家id」去重,29%
+processed/beian_master,AI户数,AI 网上检索到的户数（户），来源页面见 AI来源，可信度见 AI户数置信度,32%
+processed/beian_master,AI户数口径,户数口径四选一：单条备案 / 本备案分区 / 整小区合计 / 整小区合计·分区未拆。后两种是「整小区合计」，其中带「分区未拆」的为多条备案共用同一个小区总数，求和前必须按「链家id」去重,32%
+processed/beian_master,AI户数置信度,AI户数的来源可信度分级：A 政府官方 / B 官媒或政府背景媒体 / C 百科或权威行业 / D 房产平台多源互证；空表示该值来自早期轮次，未做分级,3%
 processed/beian_master,AI物业费,AI 网上检索到的物业费（元/㎡·月）,17%
 processed/beian_master,AI均价,AI 网上检索到的挂牌均价（元/㎡）,11%
-processed/beian_master,AI来源,AI 检索来源页面链接,30%
+processed/beian_master,AI来源,AI 检索来源页面链接,33%
 processed/beian_master,备注,关联状态、链家侧字段缺失、数值异常的逐条说明；完全无异常时为空,72%
 processed/unmatched,project_no,政府备案项目编号,100%
 processed/unmatched,政府小区名,备案登记名,100%

@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated": "2026-11-04",
+  "generated": "2026-11-05",
   "repo": "https://github.com/YaoZeyuan/beijing-xiaoqu-ditu",
   "rawBase": "https://raw.githubusercontent.com/YaoZeyuan/beijing-xiaoqu-ditu/main/public_data/",
   "browseBase": "https://github.com/YaoZeyuan/beijing-xiaoqu-ditu/tree/main/public_data/",
@@ -14,7 +14,12 @@
    "备案主表": 10495,
    "一对一": 4792,
    "多对一": 2402,
-   "低置信匹配": 2823
+   "低置信匹配": 2823,
+   "有户数备案": 8115,
+   "户数覆盖率": 77.3,
+   "户数链家": 4792,
+   "户数补查": 3324,
+   "户数整小区共用": 755
   },
   "regime": {
    "样本": 4825,
@@ -96,13 +101,13 @@
     {
      "name": "beian_master",
      "title": "北京备案项目主表（一行一条备案）",
-     "desc": "以政府备案项目为基准，右挂链家小区信息。业委会状态、物业费、公共收益均为备案口径——这是目前唯一带业委会成立情况的一手数据。链家字段按关联状态决定填不填，未匹配的成因看匹配类别列（6 类互斥，含 AI 互联网补查的「AI寻找」）。户数看 户数/AI户数 两列，AI户数口径标明是「单条备案」「本备案分区」「整小区合计」还是「整小区合计·分区未拆」——最后一种多条备案共用，求和前必须按链家id去重。",
+     "desc": "以政府备案项目为基准，右挂链家小区信息。业委会状态、物业费、公共收益均为备案口径——这是目前唯一带业委会成立情况的一手数据。链家字段按关联状态决定填不填，未匹配的成因看匹配类别列（6 类互斥，含 AI 互联网补查的「AI寻找」）。户数看 户数/AI户数 两列：AI户数口径标明是「单条备案」「本备案分区」「整小区合计」还是「整小区合计·分区未拆」，AI户数置信度标明 A 政府官方 / B 官媒 / C 百科 / D 房产平台互证；带「分区未拆」的多条备案共用、求和前必须按链家id去重。",
      "rows": 10495,
-     "fields": 46,
+     "fields": 47,
      "csv": "processed/beian_master.csv",
      "json": "processed/beian_master.json",
-     "csvSize": "7.0MB",
-     "jsonSize": "17.5MB"
+     "csvSize": "7.4MB",
+     "jsonSize": "19.0MB"
     },
     {
      "name": "unmatched",
